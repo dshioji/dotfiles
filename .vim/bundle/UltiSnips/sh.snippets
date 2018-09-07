@@ -1,0 +1,107 @@
+snippet #!
+#!/bin/bash
+endsnippet
+
+snippet !env "#!/usr/bin/env (!env)"
+#!/usr/bin/env bash
+endsnippet
+
+
+#variables-------------------
+snippet v "variable"
+\${$1}
+endsnippet
+
+snippet vd "description"
+    $1="$2"
+endsnippet
+
+snippet vdl "local variable"
+local $1="$2"
+endsnippet
+
+#declare array
+snippet da "declare array"
+    declare -a $1=( $2 )
+endsnippet
+
+snippet aa "array add"
+    array+=( 5 )
+endsnippet
+
+
+
+
+
+
+#commands--------------------
+snippet e "description"
+    echo "$1"
+endsnippet
+
+snippet ev "description"
+    echo \${$1}
+endsnippet
+
+snippet EOF "cat EOF"
+    cat <<EOF
+
+    $1
+
+EOF
+endsnippet
+
+snippet tarc "tar create"
+    tar czvfp $1.tar.gz $2
+endsnippet
+
+snippet tarx "tar extract"
+    tar xzvfp $1 $2.tar.gz
+endsnippet
+
+snippet rsync "rsync"
+    rsync -av $1 $2@$3:~/
+endsnippet
+
+snippet temp "Tempfile"
+${1:TMPFILE}="$(mktemp -t ${2:`!p
+snip.rv = re.sub(r'[^a-zA-Z]', '_', snip.fn) or "untitled"
+`})"
+${3:${4/(.+)/trap "/}${4:rm -f '$${1/.*\s//}'}${4/(.+)/" 0               # EXIT\n/}${5/(.+)/trap "/}${5:rm -f
+'$${1/.*\s//}'; exit 1}${5/(.+)/" 2       # INT\n/}${6/(.+)/trap "/}${6:rm -f '$${1/.*\s//}'; exit 1}${6/(.+)/" 1 15
+# HUP TERM\n/}}
+
+endsnippet
+
+
+
+#loops---------------------
+#for
+snippet if? "if short form"
+    [[ $1 ]] && $2
+    $0
+endsnippet
+
+snippet fori "description"
+    for $1 in \${$2} ; do
+        $0
+    done
+endsnippet
+
+snippet fora "for array"
+   i=0
+   for $1 in \${$2[@]}; do
+      echo "array[\$i] = \${$1}"
+      let i++
+   done 
+endsnippet
+
+
+
+
+
+
+
+
+
+

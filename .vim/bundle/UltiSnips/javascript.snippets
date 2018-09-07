@@ -1,0 +1,272 @@
+snippet afb
+	(${1}) => {
+		${2}
+	}
+endsnippet
+
+snippet afe
+	(${1}) => ${2}
+endsnippet
+
+snippet cd
+  console.dir(${1:obj})
+endsnippet
+
+snippet ce
+	console.error(${1:obj})
+endsnippet
+
+snippet ci
+	console.info(${1:obj})
+endsnippet
+
+snippet cl
+	console.log(${1:obj})
+endsnippet
+
+snippet com
+	/**---------------------
+     * ${1:obj}
+     *------------------
+     */
+endsnippet
+
+
+snippet cw
+	console.warn(${1:obj})
+endsnippet
+
+snippet ae
+	${1:document}.addEventListener('${2:event}', ${3:function})
+endsnippet
+
+snippet ac
+	${1:document}.appendChild(${2:elem})
+endsnippet
+
+snippet ca
+	${1:document}.classList.add('${2:class}')
+endsnippet
+
+snippet cr
+	${1:document}.classList.remove('${2:class}')
+endsnippet
+
+snippet ct
+	${1:document}.classList.toggle('${2:class}')
+endsnippet
+
+snippet cdf
+	${1:document}.createDocumentFragment(${2:elem})
+endsnippet
+
+snippet cel
+	${1:document}.createElement(${2:elem})
+endsnippet
+
+snippet ga
+	${1:document}.getAttribute('${2:attr}')
+endsnippet
+
+snippet gi
+	${1:document}.getElementById('${2:id}')
+endsnippet
+
+snippet gc
+	${1:document}.getElementsByClassName('${2:class}')
+endsnippet
+
+snippet gt
+	${1:document}.getElementsByTagName('${2:tag}')
+endsnippet
+
+snippet ih
+	${1:document}.innerHTML = '${2:html}'
+endsnippet
+
+snippet qsa
+	${1:document}.querySelectorAll('${2:selector}')
+endsnippet
+
+snippet qs
+	${1:document}.querySelector('${2:selector}')
+endsnippet
+
+snippet ra
+	${1:document}.removeAttribute('${2:attr}')
+endsnippet
+
+snippet rc
+	${1:document}.removeChild(${2:elem})
+endsnippet
+
+snippet sa
+	${1:document}.setAttribute('${2:attr}', ${3:value})
+endsnippet
+
+snippet tc
+	${1:document}.textContent = '${2:content}'
+endsnippet
+
+snippet ifei
+	if (${1:condition}) {
+		${2}
+	} else if (${3:condition}) {
+		${0}
+	}
+endsnippet
+
+snippet ife
+	if (${1:condition}) {
+		${2}
+	} else {
+		${0}
+	}
+endsnippet
+
+snippet if
+	if (${1:condition}) {
+		${0}
+	}
+endsnippet
+
+snippet switch
+	switch (${1:condition}) {
+		case ${2:when}:
+			${0}
+	}
+endsnippet
+
+snippet tcf
+	try {
+		${1}
+	} catch (${2:err}) {
+		${3}
+	} finally {
+		${0}
+	}
+
+endsnippet
+
+snippet tc
+	try {
+		${1}
+	} catch (${2:err}) {
+		${0}
+	}
+endsnippet
+
+snippet tf
+	try {
+		${1}
+	} finally {
+		${0}
+	}
+endsnippet
+
+snippet afgn
+	function* (${1}) {
+		${2}
+	}
+
+endsnippet
+
+snippet afn
+	function (${1}) {
+		${2}
+	}
+
+endsnippet
+
+snippet fgn
+	function* ${1:name} (${2}) {
+		${3}
+	}
+
+endsnippet
+
+snippet fn
+	function ${1:name} (${2}) {
+		${3}
+	}
+
+endsnippet
+
+snippet jp
+	JSON.parse(${1:obj})
+endsnippet
+
+snippet js
+	JSON.stringify(${1:obj})
+endsnippet
+
+snippet foreach
+	${1:array}.forEach((${2:item}) => {
+		${0}
+	})
+endsnippet
+
+snippet forin
+	for (${1:prop} in ${2:obj}) {
+		if (${2:obj}.hasOwnProperty(${1:prop})) {
+			${0}
+		}
+	}
+endsnippet
+
+snippet forof
+	for (let ${1:elem} of ${2:obj}) {
+		${0}
+	}
+endsnippet
+
+snippet for
+	for (let i = 0 i < ${1:length} i++) {
+		${0}
+	}
+endsnippet
+
+snippet while
+	while (${1:condition}) {
+		${0}
+	}
+endsnippet
+
+snippet al
+	alert(${1:msg})
+endsnippet
+
+snippet co
+	confirm(${1:msg})
+endsnippet
+
+snippet de
+	debugger
+endsnippet
+
+snippet pm
+	prompt(${1:msg})
+endsnippet
+
+snippet us
+	'use strict'
+endsnippet
+
+snippet imp
+	import ${1:module} from '${2:path}'
+
+endsnippet
+
+snippet st
+	setTimeout(${2:function}, ${1:duration})
+endsnippet
+
+snippet si
+	setInterval(${2:function}, ${1:duration})
+endsnippet
+
+snippet vd
+    var $1="$2"
+endsnippet
+
+
