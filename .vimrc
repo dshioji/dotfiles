@@ -312,14 +312,40 @@ let mapleader = "\<Space>"
 
 
 
-"NeoBundle-------
+"NeoBundle installs if it does not exist -------
 set nocompatible
 if has('vim_starting')
-     set runtimepath+=~/.vim/bundle/neobundle.vim
-     call neobundle#begin(expand('~/.vim/bundle/'))
+  if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+    echo "install neobundle..."
+    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+  endif
+  set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+runtime! config/*.vim
+
+filetype plugin indent on
+
+autocmd MyAutoCmd FileType * setlocal formatoptions-=ro 
+
+if(!empty(neobundle#get_not_installed_bundle_names()))
+  echomsg 'Not installed bundles: '
+    \ string(neobundle#get_not_installed_bundle_names())
+  if confirm('Install bundles now?', "yes\nNo", 2) == 1
+    NeoBundleInstall
+    source ~/.vimrc
+  endif
+end
+
+
+"--------------------
 
 "NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neomru.vim'
