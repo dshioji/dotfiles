@@ -434,7 +434,7 @@ set sessionoptions-=options
 "nnoremap <leader>? :%S/
 
 "for deleteing space affter abbrev
-func Eatchar(pat)
+function! Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
 endfunc
