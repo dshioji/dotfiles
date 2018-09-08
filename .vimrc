@@ -329,22 +329,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-runtime! config/*.vim
-
-filetype plugin indent on
-
-autocmd MyAutoCmd FileType * setlocal formatoptions-=ro 
-
-if(!empty(neobundle#get_not_installed_bundle_names()))
-  echomsg 'Not installed bundles: '
-    \ string(neobundle#get_not_installed_bundle_names())
-  if confirm('Install bundles now?', "yes\nNo", 2) == 1
-    NeoBundleInstall
-    source ~/.vimrc
-  endif
-end
-
-
 "--------------------
 
 "NeoBundle 'Shougo/neocomplete.vim'
@@ -410,7 +394,7 @@ NeoBundle 'Shougo/vimproc', {
   \ },
 \ }
 
-" tree view
+" unite.vim
 NeoBundle 'Shougo/unite.vim'
 
 " tree view
@@ -422,7 +406,23 @@ NeoBundle 'Shougo/unite-outline'
 
 "end vimproc ----------
 
+
 call neobundle#end()
+
+filetype plugin indent on
+
+autocmd MyAutoCmd FileType * setlocal formatoptions-=ro 
+
+if(!empty(neobundle#get_not_installed_bundle_names()))
+  echomsg 'Not installed bundles: '
+    \ string(neobundle#get_not_installed_bundle_names())
+  if confirm('Install bundles now?', "yes\nNo", 2) == 1
+    NeoBundleInstall
+    source ~/.vimrc
+  endif
+end
+
+
 
 
 "
