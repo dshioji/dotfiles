@@ -588,7 +588,7 @@ let g:vimfiler_as_default_explorer = 1
 " auto load vimfiler on vim load
 "autocmd VimEnter * VimFiler -split -simple -winwidth=35 -no-quit -no-focus
 
-nnoremap <leader>e :VimFilerExplore -split -winwidth=45 -find -no-quit -no-focus<Cr>
+nnoremap <leader>e :VimFilerExplore -split -winwidth=45 -find -no-quit -no-focus<Cr><esc><C-w>h
 " F2 to show tree
 " nnoremap <F2> :VimFiler -split -simple -winwidth=35 -no-quit<Cr>
 
@@ -619,7 +619,8 @@ function! s:my_action.func(candidates)
 endfunction
 call unite#custom_action('file', 'my_vsplit', s:my_action)
 
-
+set modifiable
+set write
 
 
 "end vim filer ------------
