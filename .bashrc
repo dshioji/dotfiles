@@ -18,9 +18,17 @@ export GOPATH="$HOME/src/golang"
 #pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="/usr/local/lib/python3.9/site-packages:$PATH"
+export PATH="/Users/ds/.pyenv/versions/anaconda3-5.3.1/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
+
+#rust
+. "$HOME/.cargo/env"
+
 #rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 #misc
@@ -576,6 +584,23 @@ function fs() {
         du $arg .[^.]* ./*;
     fi;
 }
+
+
+function ebrc(){
+    vim ~/.bashrc
+}
+function sbrc(){
+    source ~/.bashrc
+}
+function rm_empty(){
+    sed -e '/^$/d'
+}
+function http_server(){
+    open -n http://localhost:8000/
+    python -m http.server 8000
+}
+
+
 
 ###### autoload tmux ##############
 
