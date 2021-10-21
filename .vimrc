@@ -62,7 +62,7 @@ set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
-set expandtab        " expand tabs to spaces
+"set expandtab        " expand tabs to spaces
 
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 set textwidth=120
@@ -296,11 +296,12 @@ nnoremap tp :tabp<CR>
 nnoremap sov :so ~/.vimrc <CR>
 nnoremap ev :tabe ~/.vimrc <CR>
 
+
 "inoremap <s-tab> <c-p>
 
 "abbrevs
 inoreabbrev teh the
-inoreabbrev fn function
+"inoreabbrev fn function
 
 cnoreabbrev Wq wq
 cnoreabbrev W w
@@ -348,6 +349,8 @@ augroup END
 ""ultisnips----------------
 " Track the engine.
 NeoBundle 'SirVer/ultisnips'
+" https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+nnoremap <leader>sr <Esc>:w <CR><Esc> :call UltiSnips#RefreshSnippets()  <CR>
 
 " Snippets are separated from the engine. Add this if you want them:
 NeoBundle 'honza/vim-snippets'
@@ -355,8 +358,9 @@ NeoBundle 'honza/vim-snippets'
 
 nnoremap <leader>snip :UltiSnipsEdit<CR>
 "UltiSnips dirs
-let g:UltiSnipsSnippetsDir="~/.vim/bundle/UltiSnips/"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/bundle/UltiSnips']
+let g:UltiSnipsSnippetsDir="~/.vim/etc/UltiSnips/"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/etc/UltiSnips']
+
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -386,6 +390,65 @@ NeoBundle 'tpope/vim-surround'
 "NeoBundle 'KohPoll/vim-less'
 
 
+" rust-------------
+"NeoBundle 'rust-lang/rust.vim'
+" install rustfmt by:
+" rustup component add rustfmt
+let g:rustfmt_autosave = 1
+
+" rust completion
+"NeoBundle 'neoclide/coc.nvim'
+"NeoBundle  'neoclide/coc.nvim', 'release'
+"type below to install
+"CocInstall coc-rls
+
+"disable completion
+"autocmd FileType rust let b:coc_suggest_disable = 1
+"autocmd FileType markdown let b:coc_suggest_disable = 1
+
+" GoTo code navigation.
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+"set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+"if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+"  set signcolumn=number
+"else
+"  set signcolumn=yes
+"endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm(
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" rust cargo build commands
+nnoremap <leader>cr<Esc>:w <CR><Esc> :!cargo run <CR>
+inoremap <leader>cr <Esc>:w <CR><Esc> :!cargo run <CR>
+
+
+
+
+"rust end ------------
+
+"markdown------------
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
+
+"markdown end----
+
+
+
+
+
+
 " colorize indents
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
@@ -411,6 +474,10 @@ NeoBundle 'Shougo/unite.vim'
 " depend on unite.vim
 "NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/vimfiler.vim'
+" manual
+" https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
+let g:vimfiler_ignore_pattern = ['^\.DS_Store$']
+
 
 NeoBundle 'Shougo/unite-outline'
 
@@ -419,7 +486,6 @@ NeoBundle 'Shougo/unite-outline'
 
 call neobundle#end()
 
-filetype plugin indent on
 
 autocmd MyAutoCmd FileType * setlocal formatoptions-=ro 
 
@@ -490,15 +556,15 @@ endif
 
 "set paste mapping
 "toggle
-nnoremap <Space>p :set paste!<CR>
-"nnoremap <Space>np :set nopaste<CR>
+nnoremap <leader>p :set paste!<CR>
+"nnoremap <leader>np :set nopaste<CR>
 
 
 
 "unite vim-------
 
 nnoremap [unite]    <Nop>
-nmap     <Space>u [unite]
+nmap     <leader>u [unite]
 
 nnoremap <silent> [unite]c   :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]b   :<C-u>Unite buffer<CR>
@@ -641,3 +707,4 @@ set nospell
 
 
 syntax on
+filetype plugin indent on
