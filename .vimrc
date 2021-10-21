@@ -17,6 +17,16 @@ filetype plugin on
 set formatoptions+=ro
 
 
+" mouse functionality for alacrity
+set ttymouse=sgr
+set nu
+
+#auto save files
+set autowriteall
+autocmd CursorHold *  wall
+autocmd CursorHoldI *  wall
+
+
 " turn syntax highlighting on
 set t_Co=256
 
