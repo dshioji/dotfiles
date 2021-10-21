@@ -21,7 +21,7 @@ set formatoptions+=ro
 set ttymouse=sgr
 set nu
 
-#auto save files
+" auto save files
 set autowriteall
 autocmd CursorHold *  wall
 autocmd CursorHoldI *  wall
@@ -342,7 +342,7 @@ augroup END
 "--------------------
 
 "NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neomru.vim'
+"NeoBundle 'Shougo/neomru.vim'
 
 
 ""ultisnips----------------
