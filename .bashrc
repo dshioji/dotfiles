@@ -596,8 +596,8 @@ function rm_empty(){
     sed -e '/^$/d'
 }
 function http_server(){
-    open -n http://localhost:8000/
-    python -m http.server 8000
+    open -n http://localhost:8333/
+    python -m http.server 8333
 }
 
 
