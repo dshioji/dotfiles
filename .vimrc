@@ -12,6 +12,9 @@ filetype plugin indent on
 "syntax on is at the end of file
 set nowrap
 
+nnoremap <leader>wr <Esc>:set wrap linebreak<CR>
+nnoremap <leader>nowr <Esc>:set nowrap<CR>
+
 "auto insert asterisk on comments
 filetype plugin on
 set formatoptions+=ro
@@ -37,7 +40,7 @@ set hidden
 set backspace=indent,eol,start
 
 
-"highlit search
+"highlight search
 set hlsearch
 
 "search increment
@@ -62,7 +65,7 @@ set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
-"set expandtab        " expand tabs to spaces
+set expandtab        " expand tabs to spaces
 
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 set textwidth=120
@@ -119,8 +122,8 @@ map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 "up and down reserved for snippet variable transfers
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
+map <C-j> <C-W>j
+map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
@@ -161,8 +164,8 @@ vnoremap ? ?\v
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "j j : insert mode to  normal mode
-inoremap jj <Esc>
-cnoremap jj <Esc> 
+"inoremap jj <Esc>
+"cnoremap jj <Esc> 
 
 " in normal mode F2 will save the file
 nnoremap <F2> :w<CR>
@@ -296,6 +299,15 @@ nnoremap tp :tabp<CR>
 nnoremap sov :so ~/.vimrc <CR>
 nnoremap ev :tabe ~/.vimrc <CR>
 
+"delete to the end of line and input
+nnoremap <c-e> c$
+inoremap <c-e> <Esc>c$
+"duplicate line
+nnoremap <c-d> yyp
+inoremap <c-d> <Esc>yyp
+
+
+
 
 "inoremap <s-tab> <c-p>
 
@@ -391,11 +403,17 @@ NeoBundle 'tpope/vim-surround'
 
 
 " rust-------------
-"NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'rust-lang/rust.vim'
 " install rustfmt by:
 " rustup component add rustfmt
 let g:rustfmt_autosave = 1
 
+""--- vim clippy
+"" because autocomplete is not needed
+NeoBundle 'wagnerf42/vim-clippy'
+let g:syntastic_rust_checkers = ['clippy']
+
+""----
 " rust completion
 "NeoBundle 'neoclide/coc.nvim'
 "NeoBundle  'neoclide/coc.nvim', 'release'
@@ -430,8 +448,8 @@ let g:rustfmt_autosave = 1
 "                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " rust cargo build commands
-nnoremap <leader>cr<Esc>:w <CR><Esc> :!cargo run <CR>
-inoremap <leader>cr <Esc>:w <CR><Esc> :!cargo run <CR>
+nnoremap <Space>cw<Esc>:w <CR><Esc> :!cargo run <CR>
+inoremap <Space>cw <Esc>:w <CR><Esc> :!cargo run <CR>
 
 
 
@@ -477,6 +495,16 @@ NeoBundle 'Shougo/vimfiler.vim'
 " manual
 " https://github.com/Shougo/vimfiler.vim/blob/master/doc/vimfiler.txt
 let g:vimfiler_ignore_pattern = ['^\.DS_Store$']
+let g:vimfiler_safe_mode_by_default	= 0
+let g:vimfiler_enable_auto_cd = 1
+
+" Enable file operation commands.
+" Edit file by tabedit.
+"call vimfiler#custom#profile('default', 'context', {
+"      \ 'safe' : 0,
+"      \ 'edit_action' : 'tabopen',
+"      \ })
+"
 
 
 NeoBundle 'Shougo/unite-outline'
@@ -509,7 +537,7 @@ set sessionoptions-=options
 "nnoremap <leader>/ :call eregex#toggle()<CR>
 "nnoremap <leader>? :%S/
 
-"for deleteing space affter abbrev
+"for deleteing space after abbrev
 function! Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
@@ -519,6 +547,7 @@ endfunc
 "abbreviate only in command mode
 "deletes end space with Eatchar function 
 :ca pd perldo s/<c-r>=Eatchar('\s')<cr>
+:ca perl perldo s/<c-r>=Eatchar('\s')<cr>
 
 "end PCRE-------
 
