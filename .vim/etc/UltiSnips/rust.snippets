@@ -521,6 +521,16 @@ snippet .to "to_string: String"  i
 $0
 endsnippet 
 
+snippet file "file open/and write"  i
+let mut f = OpenOptions::new()
+	.write(true)
+	.create(true)
+	.truncate(true)
+	.open("${1}")?;
+f.write_all("${2}".as_bytes())?;
+endsnippet 
+
+
 #snippet der "unwrap"  i
 ##[derive(${1:Macro})]
 #endsnippet 
