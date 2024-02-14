@@ -89,6 +89,20 @@ alias tn="tmux new-session -s"
 # Reload the shell (i.e. invoke as a login shell)
 #alias reload="exec $SHELL -l"
 
+#docker
+alias d='docker '
+alias dc='docker container '
+alias di='docker image '
+alias de='docker exec -it '
+alias dps='docker ps '
+alias dcom='docker-compose '
+alias dcomup='docker-compose -f docker-compose.yml up -d'
+alias dcomdown='docker-compose -f docker-compose.yml down'
+
+alias dl='docker logs'
+alias dn='docker network'
+alias db='docker build'
+
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
